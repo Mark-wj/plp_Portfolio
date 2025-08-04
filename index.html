@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Njenga - Software Engineer</title>
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -58,10 +60,6 @@
             33% { transform: scale(1.1) rotate(2deg); }
             66% { transform: scale(0.95) rotate(-1deg); }
         }
-
-
-
-
 
         /* Moving bolts for projects section - Enhanced visibility */
         .electric-bolts {
@@ -124,52 +122,80 @@
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 0;
             background: rgba(10, 10, 10, 0.98);
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        /* Enhanced Professional Logo */
         .logo {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: logoGlow 3s ease-in-out infinite;
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 2px;
+            animation: logoGlow 3s ease-in-out infinite;
         }
 
         .logo::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
             background: var(--gradient-1);
-            opacity: 0.2;
-            filter: blur(10px);
-            animation: logoGlow 3s ease-in-out infinite;
+            border-radius: 2px;
+            animation: logoGlow 3s ease-in-out infinite reverse;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            animation: logoIconSpin 10s linear infinite;
         }
 
         @keyframes logoGlow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.5) drop-shadow(0 0 15px var(--glow-color)); }
+            0%, 100% { opacity: 1; transform: translateY(-50%) scaleY(1); }
+            50% { opacity: 0.7; transform: translateY(-50%) scaleY(1.2); }
+        }
+
+        @keyframes logoIconSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .nav-links {
@@ -269,7 +295,7 @@
             color: var(--primary-bg);
         }
 
-        /* Hero Section - Enhanced */
+        /* Hero Section - Enhanced and Centered */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -285,9 +311,10 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            max-width: 1400px;
+            max-width: 1200px;
             width: 100%;
             z-index: 2;
+            margin: 0 auto;
         }
 
         .hero-content {
@@ -539,14 +566,16 @@
             100% { transform: translateY(-10vh) rotate(360deg) scale(0); opacity: 0; }
         }
 
-        /* Sections - Enhanced */
+        /* Sections - Enhanced and Centered */
         section {
             padding: 120px 0;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
             position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .section-title {
@@ -738,12 +767,12 @@
             font-size: 1rem;
         }
 
-        /* Resume & Certifications Section */
+        /* Resume & Certifications Section - Enhanced */
         .resume-certifications {
             background: var(--tertiary-bg);
             border-radius: 40px;
-            margin: 100px 2rem;
-            padding: 100px 2rem;
+            margin: 100px 0;
+            padding: 100px 0;
             position: relative;
             overflow: hidden;
         }
@@ -764,13 +793,6 @@
         @keyframes resumeBg {
             0%, 100% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.05) rotate(-2deg); }
-        }
-
-        .resume-certifications-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
 
         .resume-section {
@@ -892,22 +914,29 @@
             font-size: 0.9rem;
         }
 
-        /* Certifications Grid */
-        .certifications-grid {
+        /* Certifications Gallery - PDF Cards */
+        .certifications-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
 
         .certification-card {
             background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 25px;
-            padding: 2.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -928,94 +957,84 @@
         }
 
         .certification-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border-color: var(--accent-secondary);
+            background: var(--tertiary-bg);
         }
 
-        .cert-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cert-logo {
-            width: 60px;
-            height: 60px;
+        .cert-icon {
+            width: 80px;
+            height: 80px;
             background: var(--gradient-2);
-            border-radius: 15px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             color: var(--primary-bg);
-            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(255, 0, 128, 0.3);
         }
 
-        .cert-info h4 {
+        .cert-content h4 {
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             background: var(--gradient-2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.4;
         }
 
         .cert-issuer {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             font-size: 1rem;
-        }
-
-        .cert-details {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .cert-date {
             color: var(--accent-color);
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-id {
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
             margin-bottom: 1rem;
         }
 
-        .cert-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .cert-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .cert-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+        .cert-badge {
             background: var(--code-bg);
             color: var(--accent-color);
-            text-decoration: none;
+            padding: 0.3rem 0.8rem;
             border-radius: 15px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        .cert-download {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-bg);
+            font-size: 1rem;
+            opacity: 0;
+            transform: scale(0);
             transition: all 0.3s ease;
         }
 
-        .cert-link:hover {
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            transform: translateY(-2px);
+        .certification-card:hover .cert-download {
+            opacity: 1;
+            transform: scale(1);
         }
+
+        /* Skills Section - Enhanced */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1060,9 +1079,7 @@
         .skill-icon {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-color);
             animation: skillPulse 3s ease-in-out infinite;
         }
 
@@ -1089,8 +1106,8 @@
             position: relative;
             background: var(--secondary-bg);
             border-radius: 40px;
-            margin: 100px 2rem;
-            padding: 100px 2rem;
+            margin: 100px 0;
+            padding: 100px 0;
             overflow: hidden;
         }
 
@@ -1110,13 +1127,6 @@
         @keyframes projectsBg {
             0%, 100% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.05) rotate(3deg); }
-        }
-
-        .projects-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 3;
         }
 
         .projects-grid {
@@ -1219,6 +1229,9 @@
             padding: 0.5rem 1rem;
             border: 1px solid var(--accent-color);
             border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .project-link:hover {
@@ -1231,7 +1244,7 @@
         .testimonials {
             background: var(--tertiary-bg);
             border-radius: 40px;
-            margin: 100px 2rem;
+            margin: 100px 0;
             padding: 100px 0;
             position: relative;
             overflow: hidden;
@@ -1251,14 +1264,6 @@
         @keyframes testimonialBg {
             0%, 100% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        .testimonials-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
         }
 
         .testimonial-carousel {
@@ -1470,10 +1475,9 @@
         /* Enhanced Responsive Design */
         @media (max-width: 1200px) {
             .nav-container,
-            section {
+            .section-container {
                 max-width: 100%;
-                padding-left: 2rem;
-                padding-right: 2rem;
+                padding: 0 2rem;
             }
 
             .hero-container {
@@ -1521,9 +1525,12 @@
 
             .education-grid,
             .projects-grid,
-            .skills-grid,
-            .certifications-grid {
+            .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .certifications-gallery {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .resume-header {
@@ -1537,19 +1544,8 @@
                 gap: 1.5rem;
             }
 
-            .resume-certifications {
-                margin: 50px 1rem;
-                padding: 60px 1rem;
-            }
-
-            #projects,
-            .testimonials {
-                margin: 50px 1rem;
-                padding: 60px 1rem;
-            }
-
             section {
-                padding: 80px 1rem;
+                padding: 80px 0;
             }
         }
 
@@ -1587,16 +1583,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .certifications-grid {
-                grid-template-columns: 1fr;
+            .certifications-gallery {
+                grid-template-columns: 1fr 1fr;
             }
 
             .resume-highlights {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .project-card {
-                min-width: unset;
             }
 
             .testimonial-content {
@@ -1608,7 +1600,7 @@
             }
 
             section {
-                padding: 60px 1rem;
+                padding: 60px 0;
             }
         }
 
@@ -1637,7 +1629,7 @@
 
             .floating-snippet:nth-child(4),
             .floating-snippet:nth-child(5) {
-                display: none; /* Hide some snippets on very small screens */
+                display: none;
             }
 
             .hero h1 {
@@ -1663,9 +1655,13 @@
                 gap: 1.5rem;
             }
 
-            .certifications-grid {
+            .certifications-gallery {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+
+            .certification-card {
+                padding: 1.5rem;
             }
 
             .resume-highlights {
@@ -1673,18 +1669,9 @@
                 gap: 1rem;
             }
 
-            .certification-card,
-            .highlight-card {
-                padding: 1.5rem;
-            }
-
-            .resume-certifications {
-                margin: 30px 0.5rem;
-                padding: 40px 1rem;
-            }
-
             .education-card,
-            .skill-card {
+            .skill-card,
+            .highlight-card {
                 padding: 1.5rem;
             }
 
@@ -1702,13 +1689,7 @@
             }
 
             section {
-                padding: 40px 1rem;
-            }
-
-            #projects,
-            .testimonials {
-                margin: 30px 0.5rem;
-                padding: 40px 1rem;
+                padding: 40px 0;
             }
         }
     </style>
@@ -1719,7 +1700,10 @@
 
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">&lt;Mark.dev/&gt;</div>
+            <div class="logo">
+                <i class="fas fa-code logo-icon"></i>
+                Mark.dev
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -1728,16 +1712,16 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></button>
         </div>
         <div class="mobile-nav" id="mobileNav">
             <ul class="mobile-nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#resume"><i class="fas fa-file-alt"></i> Resume</a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -1749,7 +1733,7 @@
                 <h1>Mark Njenga</h1>
                 <p class="subtitle">Full-Stack Software Engineer</p>
                 <div class="typing-text">Building the future, one line at a time</div>
-                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="#projects" class="cta-button"><i class="fas fa-rocket"></i> View My Work</a>
             </div>
             <div class="hero-image">
                 <div class="code-snippets-container">
@@ -1770,63 +1754,65 @@
                     </div>
                 </div>
                 <div class="profile-image">
-                   <img src="assets/images/WhatsApp Image 2025-08-04 at 11.50.19.jpeg" alt="Your Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                   <img src="assets/images/WhatsApp Image 2025-08-04 at 11.50.19.jpeg" alt="Mark Njenga" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a passionate software engineer with  experience in full-stack development. I love creating elegant solutions to complex problems and building applications that make a real impact.</p>
-                <p>My journey in tech started with curiosity about how things work under the hood. This curiosity has driven me to continuously learn and adapt to new technologies, always striving to write clean, efficient, and maintainable code.</p>
-                <p>When I'm not coding, you can find me contributing to open source projects and exploring the latest in AI and machine learning.</p>
+        <div class="section-container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate software engineer with experience in full-stack development. I love creating elegant solutions to complex problems and building applications that make a real impact.</p>
+                    <p>My journey in tech started with curiosity about how things work under the hood. This curiosity has driven me to continuously learn and adapt to new technologies, always striving to write clean, efficient, and maintainable code.</p>
+                    <p>When I'm not coding, you can find me contributing to open source projects and exploring the latest in AI and machine learning.</p>
+                </div>
+                <div class="code-snippet">
+                    <div class="code-line"><span class="code-comment">// My development philosophy</span></div>
+                    <div class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</div>
+                    <div class="code-line">  <span class="code-string">name</span>: <span class="code-string">"Mark Njenga"</span>,</div>
+                    <div class="code-line">  <span class="code-string">motto</span>: <span class="code-string">"Code with purpose"</span>,</div>
+                    <div class="code-line">  <span class="code-string">focus</span>: [<span class="code-string">"clean code"</span>, <span class="code-string">"user experience"</span>],</div>
+                    <div class="code-line">  <span class="code-function">writeCode</span>() {</div>
+                    <div class="code-line">    <span class="code-keyword">return</span> <span class="code-string">"Always learning, always improving"</span>;</div>
+                    <div class="code-line">  }</div>
+                    <div class="code-line">};</div>
+                </div>
             </div>
-            <div class="code-snippet">
-                <div class="code-line"><span class="code-comment">// My development philosophy</span></div>
-                <div class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</div>
-                <div class="code-line">  <span class="code-string">name</span>: <span class="code-string">"Mark Njenga"</span>,</div>
-                <div class="code-line">  <span class="code-string">motto</span>: <span class="code-string">"Code with purpose"</span>,</div>
-                <div class="code-line">  <span class="code-string">focus</span>: [<span class="code-string">"clean code"</span>, <span class="code-string">"user experience"</span>],</div>
-                <div class="code-line">  <span class="code-function">writeCode</span>() {</div>
-                <div class="code-line">    <span class="code-keyword">return</span> <span class="code-string">"Always learning, always improving"</span>;</div>
-                <div class="code-line">  }</div>
-                <div class="code-line">};</div>
-            </div>
-        </div>
 
-        <div class="education-section">
-            <h3 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(135deg, #ff0080, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Education</h3>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-icon">🎓</div>
-                    <div class="education-degree">Certificate in Computer Studies</div>
-                    <div class="education-school">Rift Valley Institute of Technology</div>
-                    <div class="education-year">2024</div>
-                    <div class="education-description">Graduated with a certificate in computer studies and computer technologies such as Microsoft powerpoint, Excel and Word.</div>
-                </div>
-                <div class="education-card">
-                    <div class="education-icon">📜</div>
-                    <div class="education-degree">Certificate in Software Engineering</div>
-                    <div class="education-school">Moringa School</div>
-                    <div class="education-year">June 2024 - November 2024</div>
-                    <div class="education-description">Completed a 6 month long software engineering course at moringa school. Dived into technologies like Javascript, React, Python and Flask together with SQL.</div>
-                </div>
-                <div class="education-card">
-                    <div class="education-icon">🏆</div>
-                    <div class="education-degree">Software Development </div>
-                    <div class="education-school">The Power Learn Project</div>
-                    <div class="education-year">2025</div>
-                    <div class="education-description">I am currently undertaking a course at the power learn project afterwhich I plan on majoring in AI in the said facility.</div>
+            <div class="education-section">
+                <h3 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(135deg, #ff0080, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Education</h3>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="education-degree">Certificate in Computer Studies</div>
+                        <div class="education-school">Rift Valley Institute of Technology</div>
+                        <div class="education-year">2024</div>
+                        <div class="education-description">Graduated with a certificate in computer studies and computer technologies such as Microsoft PowerPoint, Excel and Word.</div>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon"><i class="fas fa-code"></i></div>
+                        <div class="education-degree">Certificate in Software Engineering</div>
+                        <div class="education-school">Moringa School</div>
+                        <div class="education-year">June 2024 - November 2024</div>
+                        <div class="education-description">Completed a 6 month long software engineering course at Moringa School. Dived into technologies like JavaScript, React, Python and Flask together with SQL.</div>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon"><i class="fas fa-robot"></i></div>
+                        <div class="education-degree">Software Development</div>
+                        <div class="education-school">The Power Learn Project</div>
+                        <div class="education-year">2025</div>
+                        <div class="education-description">Currently undertaking a course at the Power Learn Project, after which I plan on majoring in AI in the said facility.</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="resume" class="resume-certifications">
-        <div class="resume-certifications-container">
+        <div class="section-container">
             <!-- Resume Section -->
             <div class="resume-section">
                 <div class="resume-header">
@@ -1835,157 +1821,37 @@
                         <p>Download my comprehensive resume to learn more about my professional journey, technical expertise, and achievements in software development.</p>
                     </div>
                     <a href="/assets/documents/Resume.pdf" class="resume-download">
-                        📄 Download Resume
+                        <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
 
                 <div class="resume-highlights">
                     <div class="highlight-card">
-                        <div class="highlight-icon">💼</div>
+                        <div class="highlight-icon"><i class="fas fa-briefcase"></i></div>
                         <div class="highlight-title">Experience</div>
                         <div class="highlight-value">1+</div>
                         <div class="highlight-description">Years in Software Development</div>
                     </div>
                     
                     <div class="highlight-card">
-                        <div class="highlight-icon">🚀</div>
+                        <div class="highlight-icon"><i class="fas fa-rocket"></i></div>
                         <div class="highlight-title">Projects</div>
                         <div class="highlight-value">10+</div>
                         <div class="highlight-description">Successful Projects Delivered</div>
                     </div>
                     
                     <div class="highlight-card">
-                        <div class="highlight-icon">🏆</div>
+                        <div class="highlight-icon"><i class="fas fa-award"></i></div>
                         <div class="highlight-title">Certifications</div>
                         <div class="highlight-value">4</div>
-                        <div class="highlight-description">Professional Certifications</div>
+                        <div class="highlight-description">Professional Certifications & Awards</div>
                     </div>
                     
                     <div class="highlight-card">
-                        <div class="highlight-icon">⭐</div>
+                        <div class="highlight-icon"><i class="fas fa-star"></i></div>
                         <div class="highlight-title">Client Rating</div>
                         <div class="highlight-value">4.9</div>
                         <div class="highlight-description">Average Project Rating</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certifications Section -->
-            <div class="certifications-section">
-                <h2 class="section-title">Professional Certifications</h2>
-                <div class="certifications-grid">
-                    <div class="certification-card">
-                        <div class="cert-header">
-                            <div class="cert-logo">AWS</div>
-                            <div class="cert-info">
-                                <h4>AWS Certified Solutions Architect</h4>
-                                <div class="cert-issuer">Amazon Web Services</div>
-                            </div>
-                        </div>
-                        <div class="cert-details">
-                            <div class="cert-date">Issued: March 2023</div>
-                            <div class="cert-id">Certificate ID: ASA-2023-891234</div>
-                            <div class="cert-description">Validates expertise in designing distributed systems and applications on the AWS platform, including compute, networking, storage, and database AWS services.</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="#" class="cert-link">🔗 Verify</a>
-                            <a href="#" class="cert-link">📋 View</a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="cert-header">
-                            <div class="cert-logo">GCP</div>
-                            <div class="cert-info">
-                                <h4>Google Cloud Professional Developer</h4>
-                                <div class="cert-issuer">Google Cloud Platform</div>
-                            </div>
-                        </div>
-                        <div class="cert-details">
-                            <div class="cert-date">Issued: January 2023</div>
-                            <div class="cert-id">Certificate ID: GCP-2023-567890</div>
-                            <div class="cert-description">Demonstrates ability to design, build, analyze, and maintain cloud-native applications using Google Cloud technologies and best practices.</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="#" class="cert-link">🔗 Verify</a>
-                            <a href="#" class="cert-link">📋 View</a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="cert-header">
-                            <div class="cert-logo">🔒</div>
-                            <div class="cert-info">
-                                <h4>Certified Ethical Hacker (CEH)</h4>
-                                <div class="cert-issuer">EC-Council</div>
-                            </div>
-                        </div>
-                        <div class="cert-details">
-                            <div class="cert-date">Issued: November 2022</div>
-                            <div class="cert-id">Certificate ID: CEH-2022-345678</div>
-                            <div class="cert-description">Validates skills in ethical hacking methodologies, penetration testing, and cybersecurity assessment techniques to identify and resolve vulnerabilities.</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="#" class="cert-link">🔗 Verify</a>
-                            <a href="#" class="cert-link">📋 View</a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="cert-header">
-                            <div class="cert-logo">K8s</div>
-                            <div class="cert-info">
-                                <h4>Kubernetes Administrator (CKA)</h4>
-                                <div class="cert-issuer">Cloud Native Computing Foundation</div>
-                            </div>
-                        </div>
-                        <div class="cert-details">
-                            <div class="cert-date">Issued: September 2022</div>
-                            <div class="cert-id">Certificate ID: CKA-2022-123456</div>
-                            <div class="cert-description">Demonstrates expertise in Kubernetes administration, including cluster management, networking, security, and troubleshooting in production environments.</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="#" class="cert-link">🔗 Verify</a>
-                            <a href="#" class="cert-link">📋 View</a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="cert-header">
-                            <div class="cert-logo">⚛️</div>
-                            <div class="cert-info">
-                                <h4>Meta React Developer Professional</h4>
-                                <div class="cert-issuer">Meta (Facebook)</div>
-                            </div>
-                        </div>
-                        <div class="cert-details">
-                            <div class="cert-date">Issued: July 2022</div>
-                            <div class="cert-id">Certificate ID: META-2022-789012</div>
-                            <div class="cert-description">Validates advanced skills in React development, including hooks, context, testing, and performance optimization for modern web applications.</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="#" class="cert-link">🔗 Verify</a>
-                            <a href="#" class="cert-link">📋 View</a>
-                        </div>
-                    </div>
-
-                    <div class="certification-card">
-                        <div class="cert-header">
-                            <div class="cert-logo">🐳</div>
-                            <div class="cert-info">
-                                <h4>Docker Certified Associate</h4>
-                                <div class="cert-issuer">Docker Inc.</div>
-                            </div>
-                        </div>
-                        <div class="cert-details">
-                            <div class="cert-date">Issued: May 2022</div>
-                            <div class="cert-id">Certificate ID: DCA-2022-456789</div>
-                            <div class="cert-description">Proves competency in containerization, Docker architecture, image management, orchestration, and security best practices.</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="#" class="cert-link">🔗 Verify</a>
-                            <a href="#" class="cert-link">📋 View</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1993,45 +1859,51 @@
     </section>
 
     <section id="skills">
-        <h2 class="section-title">Skills & Technologies</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon">⚛️</div>
-                <h3 class="skill-name">Frontend Development</h3>
-                <p class="skill-description">React,TypeScript, Next.js. Building responsive and interactive user interfaces with modern frameworks and cutting-edge technologies.</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🔧</div>
-                <h3 class="skill-name">Backend Development</h3>
-                <p class="skill-description">Node.js, Python,Flask, Django, FastAPI. Creating robust APIs and server-side applications with scalable architecture patterns.</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🗄️</div>
-                <h3 class="skill-name">Database Management</h3>
-                <p class="skill-description">PostgreSQL, MongoDB, Redis, Sqlite3. Designing efficient database schemas and optimizing queries for high-performance applications.</p>
+        <div class="section-container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <h3 class="skill-name">Frontend Development</h3>
+                    <p class="skill-description">React, TypeScript, Next.js. Building responsive and interactive user interfaces with modern frameworks and cutting-edge technologies.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <h3 class="skill-name">Backend Development</h3>
+                    <p class="skill-description">Node.js, Python, Flask, Django, FastAPI. Creating robust APIs and server-side applications with scalable architecture patterns.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3 class="skill-name">Database Management</h3>
+                    <p class="skill-description">PostgreSQL, MongoDB, Redis, SQLite3. Designing efficient database schemas and optimizing queries for high-performance applications.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="projects">
         <div class="electric-bolts"></div>
-        <div class="projects-container">
+        <div class="section-container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-header">
-                        <h3 class="project-title">Tiko sasa</h3>
+                        <h3 class="project-title">Tiko Sasa</h3>
                         <p class="project-description">A ticketing app for making hotel reservations, purchasing event and movie tickets.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">Django</span>
-                            <span class="tech-tag">TailwindCss</span>
+                            <span class="tech-tag">TailwindCSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://tikosasa.netlify.app/" class="project-link">Live Demo →</a>
-                            <a href="https://github.com/Mark-wj/Tiko-Sasa-Backend" class="project-link">GitHub →</a>
+                            <a href="https://tikosasa.netlify.app/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mark-wj/Tiko-Sasa-Backend" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2043,12 +1915,16 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Django</span>
                             <span class="tech-tag">React</span>
-                            <span class="tech-tag">TailwindCss</span>
+                            <span class="tech-tag">TailwindCSS</span>
                             <span class="tech-tag">PostgreSQL</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://tripplanner2.netlify.app/" class="project-link">Live Demo →</a>
-                            <a href="https://github.com/Mark-wj/Tripplanner_frontend/tree/master/my-trip-planner" class="project-link">GitHub →</a>
+                            <a href="https://tripplanner2.netlify.app/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mark-wj/Tripplanner_frontend/tree/master/my-trip-planner" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2062,8 +1938,12 @@
                             <span class="tech-tag">JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://phase-3-wk1-code-chakkenge-xpqm.vercel.app/" class="project-link">Live Demo →</a>
-                            <a href="https://github.com/MarkNjenga/phase-3-wk1-code-chakkenge" class="project-link">GitHub →</a>
+                            <a href="https://phase-3-wk1-code-chakkenge-xpqm.vercel.app/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/MarkNjenga/phase-3-wk1-code-chakkenge" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2072,7 +1952,7 @@
     </section>
 
     <section class="testimonials">
-        <div class="testimonials-container">
+        <div class="section-container">
             <h2 class="section-title">What Others Say</h2>
             <div class="testimonial-carousel">
                 <div class="testimonial-item active">
@@ -2101,7 +1981,7 @@
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p class="testimonial-text">Marks's code is clean, well-documented, and maintainable. He has a rare combination of technical excellence and great communication skills that make complex projects feel effortless and enjoyable.</p>
+                        <p class="testimonial-text">Mark's code is clean, well-documented, and maintainable. He has a rare combination of technical excellence and great communication skills that make complex projects feel effortless and enjoyable.</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">TN</div>
@@ -2121,38 +2001,46 @@
     </section>
 
     <section id="contact">
-        <h2 class="section-title">Let's Connect</h2>
-        <div class="contact-container">
-            <div>
-                <h3 style="font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(135deg, #ff0080, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ready to collaborate?</h3>
-                <p style="font-size: 1.3rem; color: var(--text-secondary); line-height: 1.8;">I'm always excited to work on innovative projects and connect with fellow developers. Whether you have a project in mind, want to discuss technology trends, or just want to chat about code, feel free to reach out!</p>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div>
-                        <h4>Email</h4>
-                        <p>marknjenga25@gmail.com</p>
-                    </div>
+        <div class="section-container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-container">
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(135deg, #ff0080, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ready to collaborate?</h3>
+                    <p style="font-size: 1.3rem; color: var(--text-secondary); line-height: 1.8;">I'm always excited to work on innovative projects and connect with fellow developers. Whether you have a project in mind, want to discuss technology trends, or just want to chat about code, feel free to reach out!</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+254 (07) 6999-2344</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>marknjenga25@gmail.com</p>
+                        </div>
                     </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div>
-                        <h4>Location</h4>
-                        <p>34 Forest Road, Milimani</p>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+254 (07) 6999-2344</p>
+                        </div>
                     </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/Mark-wj" class="social-link" title="GitHub">🐙</a>
-                    <a href="https://www.linkedin.com/in/mark-wanjiku-708654304/" class="social-link" title="LinkedIn">💼</a>
-                    <a href="https://www.instagram.com/algorithm_mark/" class="social-link" title='Instagram'>🐦</a>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>34 Forest Road, Milimani</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/Mark-wj" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mark-wanjiku-708654304/" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/algorithm_mark/" class="social-link" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2348,7 +2236,7 @@
             initTestimonials();
             
             // Add scroll animation to all cards
-            const cards = document.querySelectorAll('.skill-card, .project-card, .education-card, .certification-card, .highlight-card');
+            const cards = document.querySelectorAll('.skill-card, .project-card, .education-card, .highlight-card, .certification-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(50px)';
