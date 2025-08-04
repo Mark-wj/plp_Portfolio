@@ -16,4 +16,4 @@ A modern, responsive portfolio website showcasing my software engineering skills
 - Modern Web APIs
 
 ## Deployment
-This site is deployed on [Your Platform] and can be accessed at [Your URL]
+This site is deployed on Netlify and can be accessed at https://njengasportfolio.netlify.app/
